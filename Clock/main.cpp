@@ -40,12 +40,12 @@ public:
     Time();
     Time(unsigned short, unsigned short, unsigned short);
     
-    unsigned short get_sec();
-    unsigned short get_min();
-    unsigned short get_hour();
-    std::string get_str_sec();
-    std::string get_str_min();
-    std::string get_str_hour();
+    unsigned short get_sec() const;
+    unsigned short get_min() const;
+    unsigned short get_hour() const;
+    std::string get_str_sec() const;
+    std::string get_str_min() const;
+    std::string get_str_hour() const;
     
     void stop();
     Time* get_time();
@@ -154,33 +154,33 @@ Time::set_time(unsigned short hour, unsigned short min, unsigned short sec)
 }
 
 unsigned short
-Time::get_sec()
+Time::get_sec() const
 {
     return sec;
 }
 unsigned short
-Time::get_min()
+Time::get_min() const
 {
     return min;
 }
 unsigned short
-Time::get_hour()
+Time::get_hour() const
 {
     return hour;
 }
 
 std::string
-Time::get_str_sec()
+Time::get_str_sec() const
 {
     return str_sec;
 }
 std::string
-Time::get_str_min()
+Time::get_str_min() const
 {
     return str_min;
 }
 std::string
-Time::get_str_hour()
+Time::get_str_hour() const
 {
     return str_hour;
 }
@@ -547,6 +547,23 @@ Clock::set()
     else
     {
         for (int i = 0; i<3; ++i) {
+            bool stop = 1;
+            while(stop)
+            {
+                for (char c : s) {
+                    if(c>'9'||c<'0')
+                    {
+                        std::cin.clear();
+                        std::cin.ignore(32767, '\n');
+                        
+                        std::cout<< "INPUT ERROR. Print again\n";
+                        std::cin>>s;
+                        stop = 1;
+                        break;
+                    }
+                    stop = 0;
+                }
+            }
             time[i] = std::stoi(s);
             if(i<2)
             {

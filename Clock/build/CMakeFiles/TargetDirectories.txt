@@ -1,3 +1,0 @@
-/Users/olegchernov/Desktop/Projects/Clock/Clock/build/CMakeFiles/main.dir
-/Users/olegchernov/Desktop/Projects/Clock/Clock/build/CMakeFiles/edit_cache.dir
-/Users/olegchernov/Desktop/Projects/Clock/Clock/build/CMakeFiles/rebuild_cache.dir

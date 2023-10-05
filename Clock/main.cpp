@@ -68,7 +68,7 @@ class Clock
     }
     
     
-    void set_time(Time& t);
+    void set_time (Time& t) noexcept;
     
     void save_time();
     Time& read_time();
@@ -76,17 +76,17 @@ class Clock
     void save_break_point();
     Time&& read_break_point();
     
-    void calculate(Time&&, Time&);
+    void calculate(Time&&, Time&) noexcept ;
     
-    void time_run();
+    void time_run() noexcept ;
     
-    Time* get_time();
+    Time* get_time() noexcept ;
     
-    void set_time(std::string);
-    void set_time(unsigned short, unsigned short, unsigned short);
-    void set_sec(unsigned short);
-    void set_min(unsigned short);
-    void set_hour(unsigned short);
+    void set_time(std::string) noexcept ;
+    void set_time(unsigned short, unsigned short, unsigned short) noexcept ;
+    void set_sec(unsigned short) noexcept ;
+    void set_min(unsigned short) noexcept ;
+    void set_hour(unsigned short) noexcept ;
     
     void menu(bool&);
     void set();
@@ -276,28 +276,28 @@ Time::format(Time::Time_type&& t)
 
 //==================================================================================CLOCK_INIT======SET_TIME
 void
-Clock::set_sec(unsigned short s)
+Clock::set_sec(unsigned short s) noexcept
 {
     this_clock_time.set_sec(s);
 }
 void
-Clock::set_min(unsigned short m)
+Clock::set_min(unsigned short m) noexcept
 {
     this_clock_time.set_min(m);
 }
 void
-Clock::set_hour(unsigned short h)
+Clock::set_hour(unsigned short h) noexcept
 {
     this_clock_time.set_hour(h);
 }
 void
-Clock::set_time(unsigned short h, unsigned short m, unsigned short s)
+Clock::set_time(unsigned short h, unsigned short m, unsigned short s) noexcept
 {
     this_clock_time.set_time(h, m, s);
 }
 
 void
-Clock::set_time(std::string now)
+Clock::set_time(std::string now) noexcept
 {
     if(now == "NOW")
     {
@@ -313,7 +313,7 @@ Clock::set_time(std::string now)
 
 //==================================================================================CLOCK_INIT======GET_TIME
 Time*
-Clock::get_time()
+Clock::get_time() noexcept
 {
     return &this_clock_time;
 }
@@ -350,7 +350,7 @@ Clock::print_time()
 }
 
 void
-Clock::time_run()
+Clock::time_run() noexcept
 {
     this_clock_time.running();
 }
@@ -463,7 +463,7 @@ Clock::read_break_point()
 }
 
 void
-Clock::calculate(Time &&break_point, Time& ret)
+Clock::calculate(Time &&break_point, Time& ret) noexcept
 {
     time_t now = time(0);
     tm *lt(localtime(&now));

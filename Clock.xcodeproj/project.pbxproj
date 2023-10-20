@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		430D3FA82AC830D200AE41C6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 430D3FA72AC830D200AE41C6 /* main.cpp */; };
+		436AD5C52AE2ABDE00AB9B58 /* Time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 436AD5C32AE2ABDE00AB9B58 /* Time.cpp */; };
+		436AD5C82AE2AC1100AB9B58 /* Clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 436AD5C62AE2AC1100AB9B58 /* Clock.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,10 @@
 /* Begin PBXFileReference section */
 		430D3FA42AC830D200AE41C6 /* Clock */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Clock; sourceTree = BUILT_PRODUCTS_DIR; };
 		430D3FA72AC830D200AE41C6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		436AD5C32AE2ABDE00AB9B58 /* Time.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Time.cpp; sourceTree = "<group>"; };
+		436AD5C42AE2ABDE00AB9B58 /* Time.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Time.hpp; sourceTree = "<group>"; };
+		436AD5C62AE2AC1100AB9B58 /* Clock.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Clock.cpp; sourceTree = "<group>"; };
+		436AD5C72AE2AC1100AB9B58 /* Clock.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Clock.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				430D3FA72AC830D200AE41C6 /* main.cpp */,
+				436AD5C32AE2ABDE00AB9B58 /* Time.cpp */,
+				436AD5C42AE2ABDE00AB9B58 /* Time.hpp */,
+				436AD5C62AE2AC1100AB9B58 /* Clock.cpp */,
+				436AD5C72AE2AC1100AB9B58 /* Clock.hpp */,
 			);
 			path = Clock;
 			sourceTree = "<group>";
@@ -119,6 +129,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				436AD5C52AE2ABDE00AB9B58 /* Time.cpp in Sources */,
+				436AD5C82AE2AC1100AB9B58 /* Clock.cpp in Sources */,
 				430D3FA82AC830D200AE41C6 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

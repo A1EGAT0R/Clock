@@ -24,21 +24,21 @@ Time::Time(int16_t s, int16_t m, int16_t h):hour(h), min(m), sec(s)
 }
 
 void
-Time::set_sec(int16_t sec) noexcept
+Time::set_sec(int16_t sec)
 {
     this->sec = sec;
     this->str_sec = std::to_string(sec);
     format(Time_type::sec);
 }
 void
-Time::set_min(int16_t min) noexcept
+Time::set_min(int16_t min)
 {
     this->min = min;
     this->str_min = std::to_string(min);
     format(Time_type::min);
 }
 void
-Time::set_hour(int16_t hour) noexcept
+Time::set_hour(int16_t hour)
 {
     this->hour = hour;
     this->str_hour = std::to_string(hour);

@@ -1,22 +1,22 @@
 #include "Clock.hpp"
 
 void
-Clock::set_sec(int16_t s) noexcept
+Clock::set_sec(int16_t s)
 {
     this_clock_time.set_sec(s);
 }
 void
-Clock::set_min(int16_t m) noexcept
+Clock::set_min(int16_t m)
 {
     this_clock_time.set_min(m);
 }
 void
-Clock::set_hour(int16_t h) noexcept
+Clock::set_hour(int16_t h)
 {
     this_clock_time.set_hour(h);
 }
 void
-Clock::set_time(int16_t h, int16_t m, int16_t s) noexcept
+Clock::set_time(int16_t h, int16_t m, int16_t s)
 {
     this_clock_time.set_time(h, m, s);
 }
@@ -37,10 +37,10 @@ Clock::set_time(std::string now)
 //==================================================================================CLOCK_INIT======SET_TIME
 
 //==================================================================================CLOCK_INIT======GET_TIME
-Time*
-Clock::get_time() noexcept
+Time
+Clock::get_time() 
 {
-    return &this_clock_time;
+    return this_clock_time;
 }
 //==================================================================================CLOCK_INIT======GET_TIME
 
@@ -75,7 +75,7 @@ Clock::print_time()
 }
 
 void
-Clock::time_run() noexcept
+Clock::time_run() 
 {
     this_clock_time.running();
 }
@@ -188,7 +188,7 @@ Clock::read_break_point()
 }
 
 void
-Clock::calculate(Time &&break_point, Time& ret) noexcept
+Clock::calculate(Time &&break_point, Time& ret)
 {
     time_t now = time(0);
     tm *lt(localtime(&now));

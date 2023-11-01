@@ -39,9 +39,9 @@ public:
     
     bool is_new_time();
     void set_time(int16_t, int16_t, int16_t);
-    void set_sec(int16_t) noexcept;
-    void set_min(int16_t) noexcept;
-    void set_hour(int16_t) noexcept;
+    void set_sec(int16_t);
+    void set_min(int16_t);
+    void set_hour(int16_t) ;
 
     void running();
 
@@ -54,5 +54,4 @@ public:
     std::string get_str_hour() const;
 
     void stop();
-    Time* get_time();
 };

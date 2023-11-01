@@ -14,12 +14,7 @@ class Clock
     bool next_min;
     bool helper;
 
-    void clear_win() {
-        std::cout << "\033[0d\033[2J";
-    }
-
-
-    void set_time (Time& t) noexcept;
+    void clear_win() { std::cout << "\033[0d\033[2J"; }
 
     void save_time();
     Time read_time();
@@ -27,17 +22,17 @@ class Clock
     void save_break_point();
     Time read_break_point();
 
-    void calculate(Time&&, Time&) noexcept ;
+    void calculate(Time&&, Time&) ;
 
-    void time_run() noexcept ;
+    void time_run();
 
-    Time* get_time() noexcept ;
+    Time get_time() ;
 
     void set_time(std::string);
-    void set_time(int16_t, int16_t, int16_t) noexcept ;
-    void set_sec(int16_t) noexcept ;
-    void set_min(int16_t) noexcept ;
-    void set_hour(int16_t) noexcept ;
+    void set_time(int16_t, int16_t, int16_t);
+    void set_sec(int16_t);
+    void set_min(int16_t);
+    void set_hour(int16_t);
 
     void menu(bool&);
     void set();

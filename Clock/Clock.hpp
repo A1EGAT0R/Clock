@@ -33,11 +33,11 @@ class Clock
 
     Time* get_time() noexcept ;
 
-    void set_time(std::string) noexcept ;
-    void set_time(unsigned short, unsigned short, unsigned short) noexcept ;
-    void set_sec(unsigned short) noexcept ;
-    void set_min(unsigned short) noexcept ;
-    void set_hour(unsigned short) noexcept ;
+    void set_time(std::string);
+    void set_time(int16_t, int16_t, int16_t) noexcept ;
+    void set_sec(int16_t) noexcept ;
+    void set_min(int16_t) noexcept ;
+    void set_hour(int16_t) noexcept ;
 
     void menu(bool&);
     void set();

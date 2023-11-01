@@ -1,28 +1,28 @@
 #include "Clock.hpp"
 
 void
-Clock::set_sec(unsigned short s) noexcept
+Clock::set_sec(int16_t s) noexcept
 {
     this_clock_time.set_sec(s);
 }
 void
-Clock::set_min(unsigned short m) noexcept
+Clock::set_min(int16_t m) noexcept
 {
     this_clock_time.set_min(m);
 }
 void
-Clock::set_hour(unsigned short h) noexcept
+Clock::set_hour(int16_t h) noexcept
 {
     this_clock_time.set_hour(h);
 }
 void
-Clock::set_time(unsigned short h, unsigned short m, unsigned short s) noexcept
+Clock::set_time(int16_t h, int16_t m, int16_t s) noexcept
 {
     this_clock_time.set_time(h, m, s);
 }
 
 void
-Clock::set_time(std::string now) noexcept
+Clock::set_time(std::string now)
 {
     if(now == "NOW")
     {

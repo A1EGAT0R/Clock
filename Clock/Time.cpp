@@ -17,28 +17,28 @@ Time::Time(): hour(0), min(0), sec(0)
     new_time = 0;
     intT_to_stringT();
 }
-Time::Time(unsigned short s, unsigned short m, unsigned short h):hour(h), min(m), sec(s)
+Time::Time(int16_t s, int16_t m, int16_t h):hour(h), min(m), sec(s)
 {
     new_time = 0;
     intT_to_stringT();
 }
 
 void
-Time::set_sec(unsigned short sec)
+Time::set_sec(int16_t sec) noexcept
 {
     this->sec = sec;
     this->str_sec = std::to_string(sec);
     format(Time_type::sec);
 }
 void
-Time::set_min(unsigned short min)
+Time::set_min(int16_t min) noexcept
 {
     this->min = min;
     this->str_min = std::to_string(min);
     format(Time_type::min);
 }
 void
-Time::set_hour(unsigned short hour)
+Time::set_hour(int16_t hour) noexcept
 {
     this->hour = hour;
     this->str_hour = std::to_string(hour);
@@ -46,7 +46,7 @@ Time::set_hour(unsigned short hour)
 }
 
 void
-Time::set_time(unsigned short hour, unsigned short min, unsigned short sec)
+Time::set_time(int16_t hour,int16_t min, int16_t sec)
 {
     new_time = 1;
     this->set_hour(hour);
@@ -54,17 +54,17 @@ Time::set_time(unsigned short hour, unsigned short min, unsigned short sec)
     this->set_sec(sec);
 }
 
-unsigned short
+int16_t
 Time::get_sec() const
 {
     return sec;
 }
-unsigned short
+int16_t
 Time::get_min() const
 {
     return min;
 }
-unsigned short
+int16_t
 Time::get_hour() const
 {
     return hour;

@@ -48,7 +48,7 @@ Time::set_hour(unsigned short hour)
 void
 Time::set_time(unsigned short hour, unsigned short min, unsigned short sec)
 {
-    //new_time = 1;
+    new_time = 1;
     this->set_hour(hour);
     this->set_min(min);
     this->set_sec(sec);
@@ -118,7 +118,7 @@ Time::running()
 }
 
 Time&
-Time::operator=(Time &t)
+Time::operator=(const Time &t)
 {
     this->set_time(t.get_hour(), t.get_min(), t.get_sec());
 
@@ -170,3 +170,4 @@ Time::format(Time::Time_type&& t)
     }
 
 }
+

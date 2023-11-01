@@ -2,6 +2,7 @@
 #include <string>
 #include <chrono>
 #include <thread>
+#include <time.h>
 #include <iostream>
 
 struct Time
@@ -14,6 +15,7 @@ private:
         hour,
         ALL
     };
+private:
     unsigned short hour;
     unsigned short  min;
     unsigned short  sec;
@@ -22,13 +24,19 @@ private:
     std::string str_hour;
     std::string str_min;
     std::string str_sec;
-
+    
+private:
     void intT_to_stringT();
     void stringT_to_intT();
 
     void format(Time_type&& t);
 
 public:
+    Time();
+    Time(unsigned short, unsigned short, unsigned short);
+    
+    Time& operator=(const Time&);
+    
     bool is_new_time();
     void set_time(unsigned short, unsigned short, unsigned short);
     void set_sec(unsigned short);
@@ -37,8 +45,6 @@ public:
 
     void running();
 
-    Time();
-    Time(unsigned short, unsigned short, unsigned short);
 
     unsigned short get_sec() const;
     unsigned short get_min() const;
@@ -49,6 +55,4 @@ public:
 
     void stop();
     Time* get_time();
-
-    Time& operator=(Time&);
 };

@@ -155,7 +155,7 @@ Clock::save_break_point()
 //==================================================================================CLOCK_INIT======SAVE
 
 //==================================================================================CLOCK_INIT======READ
-Time&
+Time
 Clock::read_time()
 {
     std::ifstream ist(this_clock_name + ".clck");
@@ -173,7 +173,7 @@ Clock::read_time()
     return ret;
 }
 
-Time&&
+Time
 Clock::read_break_point()
 {
     std::ifstream istB(this_clock_name + "BP" + ".clck");
@@ -300,4 +300,17 @@ Clock::set()
     }
     this->next_min = 1;
 
+}
+
+//==================================================================================CLOCK_INIT======OPERATOR
+
+Clock&
+Clock::operator=(const Clock &copyClock)
+{
+    this_clock_time = copyClock.this_clock_time;
+    this_clock_name= copyClock.this_clock_name;
+    next_min = copyClock.next_min;
+    helper = copyClock.helper;
+    
+    return *this;
 }

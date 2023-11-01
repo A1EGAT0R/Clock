@@ -22,10 +22,10 @@ class Clock
     void set_time (Time& t) noexcept;
 
     void save_time();
-    Time& read_time();
+    Time read_time();
 
     void save_break_point();
-    Time&& read_break_point();
+    Time read_break_point();
 
     void calculate(Time&&, Time&) noexcept ;
 
@@ -41,9 +41,12 @@ class Clock
 
     void menu(bool&);
     void set();
+    
 public:
     Clock();
 
+    Clock& operator =(const Clock&);
+    
     void print_time();
     void work();
 };

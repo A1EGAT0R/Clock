@@ -70,7 +70,7 @@ Clock::Clock(): this_clock_name("CLOCK")
 void
 Clock::print_time()
 {
-    //clear_win();
+    clear_win();
     std::cout<< this_clock_time.get_str_hour() << ":" << this_clock_time.get_str_min()<<"\n";
 }
 

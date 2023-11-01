@@ -1,5 +1,8 @@
 #include "Time.hpp"
-
+#include <chrono>
+#include <thread>
+#include <time.h>
+#include <iostream>
 
 bool
 Time::is_new_time()
@@ -28,21 +31,21 @@ Time::set_sec(int16_t sec)
 {
     this->sec = sec;
     this->str_sec = std::to_string(sec);
-    format(Time_type::sec);
+    format(Types::Time_type::sec);
 }
 void
 Time::set_min(int16_t min)
 {
     this->min = min;
     this->str_min = std::to_string(min);
-    format(Time_type::min);
+    format(Types::Time_type::min);
 }
 void
 Time::set_hour(int16_t hour)
 {
     this->hour = hour;
     this->str_hour = std::to_string(hour);
-    format(Time_type::hour);
+    format(Types::Time_type::hour);
 }
 
 void
@@ -139,33 +142,33 @@ Time::intT_to_stringT()
     this->str_min = std::to_string(min);
     this->str_hour = std::to_string(hour);
 
-    format(Time_type::ALL);
+    format(Types::Time_type::ALL);
 }
 
 void
-Time::format(Time::Time_type&& t)
+Time::format(Types::Time_type t)
 {
     switch (t) {
-    case Time::Time_type::sec:
+    case Types::Time_type::sec:
         if(str_sec.size() == 1)
             str_sec = '0' +str_sec;
         break;
-    case Time::Time_type::min:
+    case Types::Time_type::min:
         if(str_min.size() == 1)
             str_min = '0' +str_min;
         break;
-    case Time::Time_type::hour:
+    case Types::Time_type::hour:
         if(str_hour.size() == 1)
             str_hour = '0' +str_hour;
         break;
-    case Time::Time_type::ALL:
-        format(Time::Time_type::sec);
-        format(Time::Time_type::min);
-        format(Time::Time_type::hour);
+    case Types::Time_type::ALL:
+        format(Types::Time_type::sec);
+        format(Types::Time_type::min);
+        format(Types::Time_type::hour);
         break;
     default:
         std::cout<<"WRONG TYPE. I'll do 'ALL'\n";
-        format(Time::Time_type::ALL);
+        format(Types::Time_type::ALL);
         break;
     }
 

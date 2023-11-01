@@ -1,20 +1,20 @@
 #pragma once
 #include <string>
-#include <chrono>
-#include <thread>
-#include <time.h>
-#include <iostream>
 
-struct Time
+
+namespace Types
 {
-private:
-    enum class Time_type: uint8_t
+    enum class Time_type: int8_t
     {
         sec = 1,
         min,
         hour,
         ALL
     };
+}
+struct Time
+{
+    
 private:
     int16_t hour;
     int16_t  min;
@@ -29,7 +29,7 @@ private:
     void intT_to_stringT();
     void stringT_to_intT();
 
-    void format(Time_type&& t);
+    void format(Types::Time_type t);
 
 public:
     Time();

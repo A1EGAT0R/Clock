@@ -1,5 +1,8 @@
 #include "Clock.hpp"
-
+#include <iostream>
+#include <chrono>
+#include <thread>
+#include <fstream>
 void
 Clock::set_sec(int16_t s)
 {
@@ -74,6 +77,11 @@ Clock::print_time()
     std::cout<< this_clock_time.get_str_hour() << ":" << this_clock_time.get_str_min()<<"\n";
 }
 
+void
+Clock::clear_win()
+{
+    std::cout << "\033[0d\033[2J";
+}
 void
 Clock::time_run() 
 {
@@ -172,7 +180,6 @@ Clock::read_time()
 
     return ret;
 }
-
 Time
 Clock::read_break_point()
 {
@@ -188,7 +195,7 @@ Clock::read_break_point()
 }
 
 void
-Clock::calculate(Time &&break_point, Time& ret)
+Clock::calculate(Time&& break_point, Time& ret)
 {
     time_t now = time(0);
     tm *lt(localtime(&now));
@@ -314,3 +321,5 @@ Clock::operator=(const Clock &copyClock)
     
     return *this;
 }
+
+

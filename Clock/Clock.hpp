@@ -1,10 +1,5 @@
 #pragma once
 
-#include <iostream>
-#include <chrono>
-#include <thread>
-#include <fstream>
-#include <string>
 #include "Time.hpp"
 
 class Clock
@@ -14,7 +9,7 @@ class Clock
     bool next_min;
     bool helper;
 
-    void clear_win() { std::cout << "\033[0d\033[2J"; }
+    void clear_win();
 
     void save_time();
     Time read_time();

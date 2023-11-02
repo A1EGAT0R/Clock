@@ -41,7 +41,7 @@ Clock::set_time(std::string now)
 
 //==================================================================================CLOCK_INIT======GET_TIME
 Time
-Clock::get_time() 
+Clock::get_time() const
 {
     return this_clock_time;
 }
@@ -71,14 +71,14 @@ Clock::Clock(): this_clock_name("CLOCK")
 
 //==================================================================================CLOCK_INIT======WORK_&_HELP
 void
-Clock::print_time()
+Clock::print_time() const
 {
     clear_win();
     std::cout<< this_clock_time.get_str_hour() << ":" << this_clock_time.get_str_min()<<"\n";
 }
 
 void
-Clock::clear_win()
+Clock::clear_win() const
 {
     std::cout << "\033[0d\033[2J";
 }

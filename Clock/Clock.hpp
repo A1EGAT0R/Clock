@@ -9,7 +9,7 @@ class Clock
     bool next_min;
     bool helper;
 
-    void clear_win();
+    void clear_win() const;
 
     void save_time();
     Time read_time();
@@ -21,7 +21,7 @@ class Clock
 
     void time_run();
 
-    Time get_time() ;
+    Time get_time() const;
 
     void set_time(std::string);
     void set_time(int16_t, int16_t, int16_t);
@@ -37,6 +37,6 @@ public:
 
     Clock& operator =(const Clock&);
     
-    void print_time();
+    void print_time() const;
     void work();
 };

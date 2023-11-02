@@ -74,17 +74,17 @@ Time::get_hour() const
 }
 
 std::string
-Time::get_str_sec() const
+Time::get_str_sec() const  noexcept
 {
     return str_sec;
 }
 std::string
-Time::get_str_min() const
+Time::get_str_min() const noexcept
 {
     return str_min;
 }
 std::string
-Time::get_str_hour() const
+Time::get_str_hour() const noexcept
 {
     return str_hour;
 }

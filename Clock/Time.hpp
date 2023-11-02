@@ -49,9 +49,9 @@ public:
     int16_t get_sec() const;
     int16_t get_min() const;
     int16_t get_hour() const;
-    std::string get_str_sec() const;
-    std::string get_str_min() const;
-    std::string get_str_hour() const;
+    std::string get_str_sec() const noexcept;
+    std::string get_str_min() const noexcept;
+    std::string get_str_hour() const noexcept;
 
     void stop();
 };

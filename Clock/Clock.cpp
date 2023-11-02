@@ -71,14 +71,14 @@ Clock::Clock(): this_clock_name("CLOCK")
 
 //==================================================================================CLOCK_INIT======WORK_&_HELP
 void
-Clock::print_time() const
+Clock::print_time() const noexcept
 {
     clear_win();
     std::cout<< this_clock_time.get_str_hour() << ":" << this_clock_time.get_str_min()<<"\n";
 }
 
 void
-Clock::clear_win() const
+Clock::clear_win() const noexcept
 {
     std::cout << "\033[0d\033[2J";
 }

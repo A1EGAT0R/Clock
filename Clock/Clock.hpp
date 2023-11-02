@@ -9,7 +9,7 @@ class Clock
     bool next_min;
     bool helper;
 
-    void clear_win() const;
+    void clear_win() const noexcept;
 
     void save_time();
     Time read_time();
@@ -37,6 +37,6 @@ public:
 
     Clock& operator =(const Clock&);
     
-    void print_time() const;
+    void print_time() const noexcept;
     void work();
 };

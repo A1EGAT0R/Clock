@@ -259,7 +259,7 @@ Clock::menu(bool& stop)
         else if (command == "HELP")
         {
             helper = 1;
-            next_min = 1;
+            next_min = 0;
         }
 
     }

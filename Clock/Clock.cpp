@@ -4,21 +4,6 @@
 #include <thread>
 #include <fstream>
 void
-Clock::set_sec(int16_t s)
-{
-    this_clock_time.set_sec(s);
-}
-void
-Clock::set_min(int16_t m)
-{
-    this_clock_time.set_min(m);
-}
-void
-Clock::set_hour(int16_t h)
-{
-    this_clock_time.set_hour(h);
-}
-void
 Clock::set_time(int16_t h, int16_t m, int16_t s)
 {
     this_clock_time.set_time(h, m, s);
@@ -51,7 +36,6 @@ Clock::get_time() const
 Clock::Clock(): this_clock_name("CLOCK")
 {
     helper = 1;
-    next_min = 1;
 
     std::ifstream ist(this->this_clock_name + ".clck");
     if(ist)
@@ -91,6 +75,7 @@ Clock::time_run()
 void
 Clock::work()
 {
+    std::unique_lock<std::mutex> u_lock(sign);
     bool work_on = true;
     std::thread timer(&Clock::time_run, this);
 
@@ -100,17 +85,13 @@ Clock::work()
                          });
     while(work_on)
     {
-        if(next_min||this_clock_time.is_new_time())
-        {
-            next_min = 0;
-            print_time();
-            std::this_thread::sleep_for(std::chrono::seconds(1));
-        }
+        print_time();
         if(helper)
         {
             std::cout<< "\nWhich function I have?\n 1)STOP\n 2)SET(3 int arguments)\n 3)SET(argument 'NOW')\n 4)HELP\n";
             helper = 0;
         }
+        time_changer.wait(u_lock);
     }
     stopping.detach();
     timer.detach();
@@ -250,16 +231,18 @@ Clock::menu(bool& stop)
         if(command == "SET")
         {
             set();
+            this_clock_time.throw_update();
         }
         else if(command == "STOP")
         {
             stop = 0;
+            this_clock_time.throw_update();
             break;
         }
         else if (command == "HELP")
         {
             helper = 1;
-            next_min = 0;
+            this_clock_time.throw_update();
         }
 
     }
@@ -305,8 +288,6 @@ Clock::set()
 
         this_clock_time.set_time(time[0], time[1], time[2]);
     }
-    this->next_min = 1;
-
 }
 
 //==================================================================================CLOCK_INIT======OPERATOR
@@ -316,7 +297,6 @@ Clock::operator=(const Clock &copyClock)
 {
     this_clock_time = copyClock.this_clock_time;
     this_clock_name= copyClock.this_clock_name;
-    next_min = copyClock.next_min;
     helper = copyClock.helper;
     
     return *this;

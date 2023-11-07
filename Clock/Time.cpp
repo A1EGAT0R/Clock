@@ -1,29 +1,17 @@
 #include "Time.hpp"
 #include <chrono>
-#include <thread>
 #include <time.h>
 #include <iostream>
 
-bool
-Time::is_new_time()
-{
-    if(new_time)
-    {
-        new_time = 0;
-        return 1;
-    }
-    else
-        return 0;
-}
 Time::Time(): hour(0), min(0), sec(0)
 {
-    new_time = 0;
     intT_to_stringT();
+    throw_update();
 }
 Time::Time(int16_t s, int16_t m, int16_t h):hour(h), min(m), sec(s)
 {
-    new_time = 0;
     intT_to_stringT();
+    throw_update();
 }
 
 void
@@ -51,10 +39,10 @@ Time::set_hour(int16_t hour)
 void
 Time::set_time(int16_t hour,int16_t min, int16_t sec)
 {
-    new_time = 1;
     this->set_hour(hour);
     this->set_min(min);
     this->set_sec(sec);
+    throw_update();
 }
 
 int16_t
@@ -95,7 +83,7 @@ Time::running()
     while(true)
     {
         std::this_thread::sleep_for(std::chrono::seconds(1));
-
+        bool new_time = 0;
         sec++;
         if(sec >= 60)
         {
@@ -117,6 +105,9 @@ Time::running()
         }
 
         intT_to_stringT();
+        
+        if(new_time)
+            throw_update();
     }
 }
 
@@ -172,5 +163,11 @@ Time::format(Types::Time_type t)
         break;
     }
 
+}
+
+inline void
+Time::throw_update()
+{
+    time_changer.notify_one();
 }
 

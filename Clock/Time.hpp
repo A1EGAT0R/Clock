@@ -1,6 +1,9 @@
 #pragma once
 #include <string>
+#include<thread>
 
+inline std::mutex sign;
+inline std::condition_variable time_changer;
 
 namespace Types
 {
@@ -19,7 +22,6 @@ private:
     int16_t hour;
     int16_t  min;
     int16_t  sec;
-    bool new_time;
 
     std::string str_hour;
     std::string str_min;
@@ -30,18 +32,17 @@ private:
     void stringT_to_intT();
 
     void format(Types::Time_type t);
-
+    
+    void set_sec(int16_t);
+    void set_min(int16_t);
+    void set_hour(int16_t);
 public:
     Time();
     Time(int16_t, int16_t, int16_t);
     
     Time& operator=(const Time&);
     
-    bool is_new_time();
     void set_time(int16_t, int16_t, int16_t);
-    void set_sec(int16_t);
-    void set_min(int16_t);
-    void set_hour(int16_t) ;
 
     void running();
 
@@ -52,6 +53,8 @@ public:
     std::string get_str_sec() const noexcept;
     std::string get_str_min() const noexcept;
     std::string get_str_hour() const noexcept;
+    
+    inline void throw_update();
 
     void stop();
 };
